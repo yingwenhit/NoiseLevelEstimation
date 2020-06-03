@@ -21,6 +21,6 @@ imagaussian.m  (gaussian deblur)
 *Imp_NLPM_GS.cpp ((1st version) apply Gauss-Seidel method to solve the semi-implicit scheme of NLPM equations)
 Imp_NLPM_GS2.cpp ((2nd version) reduce the size of coefficient (from N*N to N*5))
 
-*NLE.m very old version
+*NLE.m (very old version)
 
 
