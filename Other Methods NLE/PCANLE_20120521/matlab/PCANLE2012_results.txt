@@ -1,0 +1,16 @@
+10.346183, cameraman-In-10.mat 
+14.844584, cameraman-In-15.mat 
+20.327056, cameraman-In-20.mat 
+24.735229, cameraman-In-25.mat 
+11.465915, fingerprint1-In-10.mat 
+16.327557, fingerprint1-In-15.mat 
+20.830387, fingerprint1-In-20.mat 
+25.817839, fingerprint1-In-25.mat 
+10.375480, lena-In-10.mat 
+15.190215, lena-In-15.mat 
+20.040882, lena-In-20.mat 
+24.942213, lena-In-25.mat 
+9.505862, mdn4_w-In-10.mat 
+14.901386, mdn4_w-In-15.mat 
+19.326912, mdn4_w-In-20.mat 
+23.802253, mdn4_w-In-25.mat 

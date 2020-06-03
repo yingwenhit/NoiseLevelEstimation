@@ -1,0 +1,149 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>NLPM_NLE_test_sameParameters</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-05-04"><meta name="DC.source" content="NLPM_NLE_test_sameParameters.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Test for same parameters</a></li><li><a href="#2">Parameters</a></li></ul></div><h2>Test for same parameters<a name="1"></a></h2><pre class="codeinput">clear <span class="string">all</span>
+close <span class="string">all</span>
+</pre><h2>Parameters<a name="2"></a></h2><pre class="codeinput">iter   = 200;<span class="comment">%25 185;%20 110;%15 80;%10</span>
+K      = 2;
+sigmaG = 1;
+tau    = 0.2; <span class="comment">% Parameters in NLPM</span>
+alpha  = 0.2;
+beta   = 1e-3; <span class="comment">% Parameters in NLE algorithm (see paper)</span>
+
+<span class="comment">% Input images</span>
+Name = {<span class="string">'mdn4_w'</span>, <span class="string">'cameraman'</span>, <span class="string">'fingerprint1'</span>, <span class="string">'lena'</span>};
+Std_n = {10, 15, 20, 25};
+<span class="keyword">for</span> i=1:4
+    <span class="keyword">for</span> j=1:4
+        name_img = Name{i};
+        std_n = Std_n{j};
+        load ([<span class="string">'NLE_image/'</span> name_img <span class="string">'-In-'</span> num2str(std_n) ])
+
+        [NLE,  u_pde, O_flat, Count] = NLPM_NLE_C2(In, iter, K, sigmaG, tau, alpha, beta);
+        dif_noise = std_n - NLE;
+<span class="comment">%         disp(['Difference = ' num2str(std_n - NLE)])</span>
+        disp([name_img <span class="string">' '</span> num2str(std_n) <span class="string">' '</span> num2str(dif_noise)]);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+
+
+
+<span class="comment">% save(['NLE_image/'  name_img '-NLE-' num2str(std_n)])</span>
+</pre><pre class="codeoutput">mdn4_w 10 0.13186
+mdn4_w 15 0.12807
+mdn4_w 20 0.12322
+mdn4_w 25 -0.16711
+cameraman 10 -3.2576
+cameraman 15 -2.1867
+cameraman 20 -1.6475
+cameraman 25 -1.0072
+fingerprint1 10 -0.91019
+fingerprint1 15 -0.18503
+fingerprint1 20 0.23349
+fingerprint1 25 0.82637
+lena 10 -2.4046
+lena 15 -1.4466
+lena 20 -0.87476
+lena 25 -0.3558
+</pre><img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_01.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_02.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_03.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_04.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_05.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_06.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_07.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_08.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_09.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_10.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_11.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_12.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_13.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_14.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_15.png" alt=""> <img vspace="5" hspace="5" src="NLPM_NLE_test_sameParameters_16.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Test for same parameters
+clear all
+close all
+
+%% Parameters
+iter   = 200;%25 185;%20 110;%15 80;%10
+K      = 2;
+sigmaG = 1;
+tau    = 0.2; % Parameters in NLPM
+alpha  = 0.2;
+beta   = 1e-3; % Parameters in NLE algorithm (see paper)
+
+% Input images
+Name = {'mdn4_w', 'cameraman', 'fingerprint1', 'lena'};
+Std_n = {10, 15, 20, 25};
+for i=1:4
+    for j=1:4
+        name_img = Name{i};
+        std_n = Std_n{j};
+        load (['NLE_image/' name_img '-In-' num2str(std_n) ])
+        
+        [NLE,  u_pde, O_flat, Count] = NLPM_NLE_C2(In, iter, K, sigmaG, tau, alpha, beta);
+        dif_noise = std_n - NLE;
+%         disp(['Difference = ' num2str(std_n - NLE)])
+        disp([name_img ' ' num2str(std_n) ' ' num2str(dif_noise)]);
+    end
+end
+
+
+
+
+% save(['NLE_image/'  name_img '-NLE-' num2str(std_n)])
+##### SOURCE END #####
+--></body></html>

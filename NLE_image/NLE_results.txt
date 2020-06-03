@@ -1,0 +1,16 @@
+9.995542, 0.004458, cameraman-NLE-10.mat 
+15.009821, -0.009821, cameraman-NLE-15.mat 
+19.988928, 0.011072, cameraman-NLE-20.mat 
+25.009397, -0.009397, cameraman-NLE-25.mat 
+10.019482, -0.019482, fingerprint1-NLE-10.mat 
+14.863484, 0.136516, fingerprint1-NLE-15.mat 
+19.894463, 0.105537, fingerprint1-NLE-20.mat 
+24.936770, 0.063230, fingerprint1-NLE-25.mat 
+10.016241, -0.016241, lena-NLE-10.mat 
+15.008914, -0.008914, lena-NLE-15.mat 
+20.012946, -0.012946, lena-NLE-20.mat 
+24.993797, 0.006203, lena-NLE-25.mat 
+9.911501, 0.088499, mdn4_w-NLE-10.mat 
+14.966452, 0.033548, mdn4_w-NLE-15.mat 
+20.004569, -0.004569, mdn4_w-NLE-20.mat 
+25.127619, -0.127619, mdn4_w-NLE-25.mat 
