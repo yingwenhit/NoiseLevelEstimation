@@ -46,7 +46,7 @@ G_inf = 1./(1 + Grad);
 
 O_flat = (1 + Grad)<=(1/alpha);
 flat = double(O_flat) .* u_pde;
-% figure,imshow(O_flat);title('O\_flat')
+figure,imshow(O_flat);title('O\_flat')
 % edge = C_N+C_S+C_E+C_W;
 % flat = (edge>=alpha*max(edge(:))).*u_pde;
 

@@ -17,7 +17,7 @@ for i=1:iter
 Gu = sqrt(Gux.^2 + Guy.^2);
 g = 1./(1+Gfg.*Gu/K);
 
-[u] = Imp_NLPM_GS2(g, f, dt);
+[u] = Imp_NLPM_GS2(g, u, dt);
 % figure(111),imshow([u,f],[]);title('Imp G-S')
 end
 

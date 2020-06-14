@@ -2,6 +2,8 @@
 This file is for noise level estimation
 (* represent nonsense)
 
+*miniBatch* with for miniBatch experiments
+
 NLE_image (experiments results)
 html-* (same parameters test results, with explicit scheme and old version equation)
 Other Methods NLE (compared method)

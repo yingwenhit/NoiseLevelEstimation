@@ -27,7 +27,8 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
-#include <cblas.h>
+//#include <cblas.h>
+//#include <cblas.h>
 // #include <omp.h>
 using namespace std;
 
@@ -140,7 +141,11 @@ void mexFunction(int nlhs, mxArray *plhs[],       //ouput
     double Rem; //Remainder
     for (int i = 0; i < 1000 & stp >= eps; i++)
     {
-        cblas_dcopy(N, V, 1, V_old, 1);
+        //cblas_dcopy(N, V, 1, V_old, 1);
+        for (int m=0;m<N;m++)
+        {
+            V_old[m] = V[m];
+        }
         infnm_ = 0;
         for (int i = 0; i < N; i++)
         {

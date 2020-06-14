@@ -1,0 +1,17 @@
+NLE  dif_noise name  iter  K   sigmaG  tau   alpha   beta 
+10.8294, -0.82942, cameraman-IMPGS-miniBatch-NLE-10.mat, 1, 8, 1.5, 10.5, 0.8, 0.001
+15.0294, -0.029357, cameraman-IMPGS-miniBatch-NLE-15.mat, 1, 11, 1.5, 15, 0.8, 0.001
+19.388, 0.61197, cameraman-IMPGS-miniBatch-NLE-20.mat, 1, 16, 1.5, 15, 0.8, 0.001
+24.4039, 0.59613, cameraman-IMPGS-miniBatch-NLE-25.mat, 1, 20, 1.5, 27, 0.8, 0.001
+9.4636, 0.53641, fingerprint1-IMPGS-miniBatch-NLE-10.mat, 1, 8, 1.5, 11, 0.8, 0.001
+11.42, 3.58, fingerprint1-IMPGS-miniBatch-NLE-15.mat, 1, 10, 1.5, 11, 0.8, 0.001
+16.0433, 3.9567, fingerprint1-IMPGS-miniBatch-NLE-20.mat, 1, 8, 1.5, 11.5, 0.8, 0.001
+21.5917, 3.4083, fingerprint1-IMPGS-miniBatch-NLE-25.mat, 1, 7, 1.5, 12.5, 0.6, 0.001
+9.9564, 0.043558, lena-IMPGS-miniBatch-NLE-10.mat, 1, 8, 1.5, 13, 0.8, 0.001
+14.5385, 0.46152, lena-IMPGS-miniBatch-NLE-15.mat, 1, 11.5, 1.5, 20, 0.8, 0.001
+19.4269, 0.57312, lena-IMPGS-miniBatch-NLE-20.mat, 1, 15.5, 1.5, 30, 0.8, 0.001
+24.5099, 0.49008, lena-IMPGS-miniBatch-NLE-25.mat, 1, 20, 1.5, 35, 0.8, 0.001
+9.8497, 0.15029, mdn4_w-IMPGS-miniBatch-NLE-10.mat, 1, 20, 1.5, 19, 0.2, 0.001
+14.7713, 0.22869, mdn4_w-IMPGS-miniBatch-NLE-15.mat, 1, 20, 1.5, 34, 0.2, 0.001
+19.7902, 0.20978, mdn4_w-IMPGS-miniBatch-NLE-20.mat, 1, 20, 1.5, 45, 0.2, 0.001
+24.4505, 0.54952, mdn4_w-IMPGS-miniBatch-NLE-25.mat, 1, 20, 1.5, 50, 0.2, 0.001
