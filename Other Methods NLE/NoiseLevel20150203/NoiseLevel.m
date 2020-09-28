@@ -124,7 +124,7 @@ for cha=1:size(img,3)
 	    sig2 = d(1);	    
 	end
 
-	nlevel(cha) = sqrt(sig2);
+	nlevel(cha) = sqrt(abs(sig2));
 	th(cha) = tau;
 	num(cha) = size(X,2);
 end

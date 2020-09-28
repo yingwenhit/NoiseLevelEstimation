@@ -4,6 +4,7 @@
 
 
 import numpy as np
+import cv2
 from cv2 import imread
 from utils import im2patch, im2double
 import time
@@ -24,6 +25,7 @@ def noise_estimate(im, pch_size=8):
         im = im.transpose((2, 0, 1))
     else:
         im = np.expand_dims(im, axis=0)
+        print('-------')
 
     # image to patch
     pch = im2patch(im, pch_size, 3)  # C x pch_size x pch_size x num_pch tensor
@@ -44,15 +46,17 @@ def noise_estimate(im, pch_size=8):
 
 
 if __name__ == '__main__':
-    im = imread('./lena.png')
+    im = imread('./lenac1.bmp',cv2.IMREAD_GRAYSCALE)
     im = im2double(im)
+    
 
     noise_level = [5, 15, 20, 30, 40]
 
     for level in noise_level:
         sigma = level / 255
 
-        im_noise = im + np.random.randn(*im.shape) * sigma
+        im_noise = im
+        #+ np.random.randn(*im.shape) * sigma
 
         start = time.time()
         est_level = noise_estimate(im_noise, 8)

@@ -4,7 +4,7 @@
 % According to the chapter 2 in paper.
 % Update,2020/06/01: Using NLPM semi-implict scheme and Gauss-Seidel Iteration method
 % add SIB-NLE 2020/06/13
-function [NLE_, SIB_NLE, u_pde, O_flat, Count] = NLPM_miniBatch_Imp_NLE_v3(I_, f_, iter, K, sigmaG, tau, alpha, beta, Bch, step)
+function [NLE_, SIB_NLE, PCA_NLE, NLE_Truth, u_pde, O_flat, Count] = NLPM_miniBatch_Imp_NLE_v3(I_, f_, iter, K, sigmaG, tau, alpha, beta, Bch, step)
 
 
 % NLPM preprocessing
@@ -37,6 +37,7 @@ u_pde_ = NLPM_Imp_GS(f_, iter, K, tau, sigmaG)+1;
 NLE_ = 0;
 NLE_Truth = 0;
 SIB_NLE = [];
+PCA_NLE = [];
 count = 1;
 
 kii = 1; 
@@ -118,10 +119,12 @@ while kii<=Nx
             NLE_(count) = sqrt(mean(fi_s));
 %             disp([num2str(PCANoiseLevelEstimator(f) )]);
 %             figure(22),imshow(f,[])
-%             SIB_NLE_ = sqrt( PCANoiseLevelEstimator(f) );
+            PCA_NLE_ = sqrt( PCANoiseLevelEstimator(f) );
+            PCA_NLE = [PCA_NLE, PCA_NLE_];
+            
             [SIB_NLE_ ~] = NoiseLevel(f);
             SIB_NLE = [SIB_NLE, SIB_NLE_];
-%             NLE_Truth(count) = sqrt(var(f(:)-I(:)));
+            NLE_Truth(count) = sqrt(var(f(:)-I(:)));
 %             save(['Lena-10-minitest/' num2str(kii) '-' num2str(kjj)], 'f', 'u_pde', 'nle');
             count = count+1;
         end
